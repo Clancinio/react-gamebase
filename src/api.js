@@ -14,7 +14,7 @@ const getCurrentMonth = () => {
 
 // Get day
 const getCurrentDay = () => {
-  const day = new Date().getDate() + 1;
+  const day = new Date().getDate();
   if (day < 10) {
     return `0${day}`;
   } else {
@@ -25,4 +25,7 @@ const getCurrentDay = () => {
 // Get year/month/day
 const currentYear = new Date().getFullYear();
 const currentMonth = getCurrentMonth();
-const currentDate = getCurrentDay();
+const currentDay = getCurrentDay();
+// Current date\
+const currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
+console.log(currentDate);
