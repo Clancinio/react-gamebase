@@ -21,3 +21,8 @@ const getCurrentDay = () => {
     return day;
   }
 };
+
+// Get year/month/day
+const currentYear = new Date().getFullYear();
+const currentMonth = getCurrentMonth();
+const currentDate = getCurrentDay();
