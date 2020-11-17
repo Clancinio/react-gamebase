@@ -1,6 +1,5 @@
 // BASE URL
 const baseURL = process.env.REACT_APP_API_BASE_URL;
-console.log(baseURL);
 
 // Get month
 const getCurrentMonth = () => {
@@ -35,3 +34,7 @@ const nextYear = `${currentYear + 1}-${currentMonth}-${currentDay}`;
 
 // Popular Games
 const popularGames = `/games?dates=${lastYear},${currentDate}$ordering=-rating&page_size=15`;
+
+// Export popular games url 
+const popularGamesURL = () => `${baseURL}${popularGames}`;
+console.log(popularGamesURL());
