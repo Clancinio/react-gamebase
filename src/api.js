@@ -28,4 +28,10 @@ const currentMonth = getCurrentMonth();
 const currentDay = getCurrentDay();
 // Current date\
 const currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
-console.log(currentDate);
+// Last year
+const lastYear = `${currentYear - 1}-${currentMonth}-${currentDay}`;
+// Next year
+const nextYear = `${currentYear + 1}-${currentMonth}-${currentDay}`;
+
+// Popular Games
+const popularGames = `/games?dates=${lastYear},${currentDate}$ordering=-rating&page_size=15`;
