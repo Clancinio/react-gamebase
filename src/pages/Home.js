@@ -1,7 +1,12 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from "react";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { loadGames } from "../actions/gamesAction";
+// Styling and Animation
+import styled from "styled-components";
+import { motion } from "framer-motion";
+// Components
+import GameCard from "../components/GameCard";
 
 function Home() {
   // FETCH GAMES
@@ -10,14 +15,29 @@ function Home() {
     dispatch(loadGames());
   }, [dispatch]);
 
-  // Get the data from the state 
-  const {newGames, popular, upcoming} = useSelector(state => state.games);
-  
+  // Get the data from the state
+  const { newGames, popular, upcoming } = useSelector((state) => state.games);
+
   return (
-    <div>
-      <h2>This is your Home</h2>
-    </div>
-  )
+    <GameList>
+      <h2>Upcoming Games</h2>
+      <Games>
+        {upcoming.map((game) => (
+          <GameCard
+            id={game.id}
+            name={game.name}
+            released={game.released}
+            image={game.background_image}
+            key={game.id}
+          />
+        ))}
+      </Games>
+    </GameList>
+  );
 }
 
-export default Home
+const GameList = styled(motion.div)``;
+
+const Games = styled(motion.div)``;
+
+export default Home;
