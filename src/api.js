@@ -34,7 +34,14 @@ const nextYear = `${currentYear + 1}-${currentMonth}-${currentDay}`;
 
 // Popular Games
 const popularGames = `/games?dates=${lastYear},${currentDate}&ordering=-rating&page_size=15`;
+// Upcoming Games
+const upcomingGames = `/games?dates${currentDate},${nextYear}&ordering=-added&page_size=15`;
+// New Games
+const newGames = `/games?dates${lastYear},${currentDate}&ordering=-released&page_size=15`;
 
 // Export popular games url 
 export const popularGamesURL = () => `${baseURL}${popularGames}`;
- 
+// Export upcoming games url
+export const upcomingGamesURL = () => `${baseURL}${upcomingGames}`;
+// Export new games url
+export const newGamesURL = () => `${baseURL}${newGames}`;
