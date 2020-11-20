@@ -1,6 +1,10 @@
 import React from "react";
 // Components and Pages
 import Home from "./pages/Home";
+import GameCard from "./components/GameCard";
+// Styling and Animation
+import styled from "styled-components";
+import { motion } from "framer-motion";
 
 function App() {
   return (
