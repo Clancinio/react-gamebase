@@ -8,7 +8,6 @@ import { motion } from "framer-motion";
 function App() {
   return (
     <div className="App">
-      <h1>Hello GameBase</h1>
       <Home />
     </div>
   );
