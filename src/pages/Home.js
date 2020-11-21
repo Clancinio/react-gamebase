@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 // Components
 import GameCard from "../components/GameCard";
+import { popularGamesURL } from "../api";
 
 function Home() {
   // FETCH GAMES
@@ -23,6 +24,30 @@ function Home() {
       <h2>Upcoming Games</h2>
       <Games>
         {upcoming.map((game) => (
+          <GameCard
+            id={game.id}
+            name={game.name}
+            released={game.released}
+            image={game.background_image}
+            key={game.id}
+          />
+        ))}
+      </Games>
+      <h2>New Games</h2>
+      <Games>
+        {newGames.map((game) => (
+          <GameCard
+            id={game.id}
+            name={game.name}
+            released={game.released}
+            image={game.background_image}
+            key={game.id}
+          />
+        ))}
+      </Games>
+      <h2>Popular Games</h2>
+      <Games>
+        {popular.map((game) => (
           <GameCard
             id={game.id}
             name={game.name}
