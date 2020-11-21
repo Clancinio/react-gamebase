@@ -45,3 +45,5 @@ export const popularGamesURL = () => `${baseURL}${popularGames}`;
 export const upcomingGamesURL = () => `${baseURL}${upcomingGames}`;
 // Export new games url
 export const newGamesURL = () => `${baseURL}${newGames}`;
+// Export game details url
+export const gameDetailsURL = (gameID) => `${baseURL}/games/${gameID}`;

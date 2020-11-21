@@ -7,7 +7,6 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 // Components
 import GameCard from "../components/GameCard";
-import { popularGamesURL } from "../api";
 
 function Home() {
   // FETCH GAMES

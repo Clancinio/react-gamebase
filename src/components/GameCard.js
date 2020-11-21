@@ -2,10 +2,19 @@ import React from "react";
 // Styling and Animation
 import styled from "styled-components";
 import { motion } from "framer-motion";
+// Redux
+import { useDispatch } from "react-redux";
+import { loadDetails } from "../actions/detailsAction";
 
-function GameCard({ name, released, image }) {
+function GameCard({ id, name, released, image}) {
+    // FETCH THE GAME DETAILS
+    const dispatch = useDispatch();
+    const loadDetalsHandler = () => {
+      dispatch(loadDetails(id));
+    }
+   
   return (
-    <StyledGameCard>
+    <StyledGameCard onClick={loadDetalsHandler}>
       <h3>{name}</h3>
       <p>{released}</p>
       <img src={image} alt={name} />
