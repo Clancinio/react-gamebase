@@ -16,7 +16,7 @@ function Home() {
   }, [dispatch]);
 
   // Get the data from the state
-  const { newGames, popular, upcoming } = useSelector((state) => state.games);
+  const { popular, newGames , upcoming } = useSelector((state) => state.games);
 
   return (
     <GameList>
