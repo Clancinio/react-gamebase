@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 // Components
 import GameCard from "../components/GameCard";
+import GameDetail from "../components/GameDetail";
 
 function Home() {
   // FETCH GAMES
@@ -16,10 +17,12 @@ function Home() {
   }, [dispatch]);
 
   // Get the data from the state
-  const { popular, newGames , upcoming } = useSelector((state) => state.games);
+  const { popular, newGames, upcoming } = useSelector((state) => state.games);
 
   return (
+    // GameDetail - This is a popup that contains details of an individual game
     <GameList>
+      <GameDetail />
       <h2>Upcoming Games</h2>
       <Games>
         {upcoming.map((game) => (
@@ -62,7 +65,7 @@ function Home() {
 
 const GameList = styled(motion.div)`
   padding: 0 5rem;
-  h2{
+  h2 {
     padding: 5rem 0;
   }
 `;
