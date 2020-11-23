@@ -12,25 +12,26 @@ function GameDetail() {
   return (
     <CardShadow>
       <Details>
-        <div className="stats">
+        {/* stats - game name, rating, and platfroms */}
+        <Stats>
           <div className="rating">
             <h3>{game.name}</h3>
             <p>Rating: {game.rating}</p>
           </div>
-          <div className="info">
+          <Info>
             <h3>Platforms</h3>
-            <div className="platforms">
+            <Platforms>
               {game.platforms &&
                 game.platforms.map((data) => (
                   <h3 key={data.platform.id}>{data.platform.name}</h3>
                 ))}
-            </div>
-          </div>
-        </div>
-        <div className="media">
+            </Platforms>
+          </Info>
+        </Stats>
+        <Media>
           <img src={game.background_image} alt={game.name} />
-        </div>
-        <div className="description">{game.description_raw}</div>
+        </Media>
+        <Description>{game.description_raw}</Description>
         <div className="gallary">
           {screen.results &&
             screen.results.map((screen) => (
@@ -50,24 +51,57 @@ const CardShadow = styled(motion.div)`
   position: fixed;
   top: 0;
   left: 0;
-  &::-webkit-scrollbar{
-      width: 0.5rem;
-    }
-    &::-webkit-scrollbar-thumb{
-      background-color: #3d98bb;
-    }
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #3d98bb;
+  }
 `;
 
 const Details = styled(motion.div)`
   width: 80%;
   border-radius: 1rem;
-  padding: 2rem 20rem;
+  padding: 2rem 10rem;
   background: #fff;
   position: absolute;
   color: #000;
   left: 10%;
-  img{
+  img {
     width: 100%;
   }
 `;
+
+const Stats = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+// platforms wrapper
+const Info = styled(motion.div)`
+  text-align: center;
+`;
+
+const Platforms = styled(motion.div)`
+  display: flex;
+  justify-content: space-evenly;
+  img {
+    margin-left: 3rem;
+  }
+`;
+
+const Media = styled(motion.div)`
+  margin-top: 5rem;
+  img {
+    width: 100%;
+    /* height: 60vh;
+    object-fit: cover; */
+  }
+`;
+
+const Description = styled(motion.div)`
+  margin: 5rem 0;
+`;
+
 export default GameDetail;
