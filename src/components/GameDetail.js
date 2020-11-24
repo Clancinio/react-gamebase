@@ -7,39 +7,43 @@ import { motion } from "framer-motion";
 
 function GameDetail() {
   // Get data from state
-  const { game, screen } = useSelector((state) => state.detail);
+  const { game, screen, isLoading } = useSelector((state) => state.detail);
 
   return (
-    <CardShadow>
-      <Details>
-        {/* stats - game name, rating, and platfroms */}
-        <Stats>
-          <div className="rating">
-            <h3>{game.name}</h3>
-            <p>Rating: {game.rating}</p>
-          </div>
-          <Info>
-            <h3>Platforms</h3>
-            <Platforms>
-              {game.platforms &&
-                game.platforms.map((data) => (
-                  <h3 key={data.platform.id}>{data.platform.name}</h3>
+    <>
+      {!isLoading && (
+        <CardShadow>
+          <Details>
+            {/* stats - game name, rating, and platfroms */}
+            <Stats>
+              <div className="rating">
+                <h3>{game.name}</h3>
+                <p>Rating: {game.rating}</p>
+              </div>
+              <Info>
+                <h3>Platforms</h3>
+                <Platforms>
+                  {game.platforms &&
+                    game.platforms.map((data) => (
+                      <h3 key={data.platform.id}>{data.platform.name}</h3>
+                    ))}
+                </Platforms>
+              </Info>
+            </Stats>
+            <Media>
+              <img src={game.background_image} alt={game.name} />
+            </Media>
+            <Description>{game.description_raw}</Description>
+            <div className="gallary">
+              {screen.results &&
+                screen.results.map((screen) => (
+                  <img src={screen.image} alt="" key={screen.id} />
                 ))}
-            </Platforms>
-          </Info>
-        </Stats>
-        <Media>
-          <img src={game.background_image} alt={game.name} />
-        </Media>
-        <Description>{game.description_raw}</Description>
-        <div className="gallary">
-          {screen.results &&
-            screen.results.map((screen) => (
-              <img src={screen.image} alt="" key={screen.id} />
-            ))}
-        </div>
-      </Details>
-    </CardShadow>
+            </div>
+          </Details>
+        </CardShadow>
+      )}
+    </>
   );
 }
 

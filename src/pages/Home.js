@@ -8,8 +8,14 @@ import { motion } from "framer-motion";
 // Components
 import GameCard from "../components/GameCard";
 import GameDetail from "../components/GameDetail";
+// React Router
+import {useLocation } from "react-router-dom";
 
 function Home() {
+  // Get the current location
+  const location = useLocation();
+  const pathId = location.pathname.split("/")[2];
+
   // FETCH GAMES
   const dispatch = useDispatch();
   useEffect(() => {
@@ -22,7 +28,7 @@ function Home() {
   return (
     // GameDetail - This is a popup that contains details of an individual game
     <GameList>
-      <GameDetail />
+      { pathId && <GameDetail /> }
       <h2>Upcoming Games</h2>
       <Games>
         {upcoming.map((game) => (
