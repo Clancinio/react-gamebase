@@ -1,18 +1,31 @@
 import React from "react";
 // Redux
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 // Styling and Animation
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
 function GameDetail() {
+  // useHistory
+  const history = useHistory();
+  // Exit GameDetail
+  const exitDetailHandler = (e) => {
+    const element = e.target;
+    if ((element.classlist = "shadow")) {
+      // Show the main scroll bar
+      document.body.style = "auto";
+      // Go back to home
+      history.push("/");
+    }
+  };
   // Get data from state
   const { game, screen, isLoading } = useSelector((state) => state.detail);
 
   return (
     <>
       {!isLoading && (
-        <CardShadow>
+        <CardShadow className="shadow" onClick={exitDetailHandler}>
           <Details>
             {/* stats - game name, rating, and platfroms */}
             <Stats>

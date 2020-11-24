@@ -11,7 +11,11 @@ import { Link } from "react-router-dom";
 function GameCard({ id, name, released, image }) {
   // FETCH THE GAME DETAILS
   const dispatch = useDispatch();
+
   const loadDetailsHandler = () => {
+    // This line hides the main scrollbar 
+    document.body.style.overflow = "hidden";
+    // Call the loadDetails function when a card is clicked
     dispatch(loadDetails(id));
   };
 
