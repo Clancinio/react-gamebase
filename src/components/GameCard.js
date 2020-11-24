@@ -31,6 +31,7 @@ const StyledGameCard = styled(motion.div)`
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
   border-radius: 5px;
+  overflow: hidden;
   cursor: pointer;
   img {
     width: 100%;
