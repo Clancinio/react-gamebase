@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadGames } from "../actions/gamesAction";
 // Styling and Animation
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 // Components
 import GameCard from "../components/GameCard";
 import GameDetail from "../components/GameDetail";
@@ -28,7 +28,7 @@ function Home() {
   return (
     // GameDetail - This is a popup that contains details of an individual game
     <GameList>
-      { pathId && <GameDetail /> }
+      <AnimatePresence>{ pathId && <GameDetail /> }</AnimatePresence>
       <h2>Upcoming Games</h2>
       <Games>
         {upcoming.map((game) => (
