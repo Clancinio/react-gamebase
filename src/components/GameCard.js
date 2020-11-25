@@ -11,6 +11,8 @@ import { Link } from "react-router-dom";
 import { resizeSmall } from "../util";
 
 function GameCard({ id, name, released, image }) {
+  const stringPathID = id.toString();
+  console.log(typeof stringPathID);
   // FETCH THE GAME DETAILS
   const dispatch = useDispatch();
 
@@ -22,11 +24,11 @@ function GameCard({ id, name, released, image }) {
   };
 
   return (
-    <StyledGameCard onClick={loadDetailsHandler}>
+    <StyledGameCard layoutId={stringPathID} onClick={loadDetailsHandler}>
       <Link to={`games/${id}`}>
-        <h3>{name}</h3>
+        <h3 layoutId={`title ${stringPathID}`}>{name}</h3>
         <p>{released}</p>
-        <img src={resizeSmall(image, 640)} alt={name} />
+        <motion.img layoutId={`image ${stringPathID}`} src={resizeSmall(image, 640)} alt={name} />
       </Link>
     </StyledGameCard>
   );

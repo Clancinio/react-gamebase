@@ -10,6 +10,8 @@ import GameCard from "../components/GameCard";
 import GameDetail from "../components/GameDetail";
 // React Router
 import { useLocation } from "react-router-dom";
+// Import resizeSmal() function
+import { resizeSmall } from "../util";
 
 function Home() {
   // Get the current location
@@ -29,7 +31,7 @@ function Home() {
     // GameDetail - This is a popup that contains details of an individual game
     <GameList>
       <AnimateSharedLayout type="crossfade">
-        <AnimatePresence>{pathId && <GameDetail />}</AnimatePresence>
+        <AnimatePresence>{pathId && <GameDetail pathId={pathId} />}</AnimatePresence>
         <h2>Upcoming Games</h2>
         <Games>
           {upcoming.map((game) => (

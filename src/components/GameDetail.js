@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 // Import resizeSmal() function
 import { resizeSmall } from "../util";
 
-function GameDetail() {
+function GameDetail({ pathId }) {
   // useHistory
   const history = useHistory();
   // Exit GameDetail
@@ -28,11 +28,11 @@ function GameDetail() {
     <>
       {!isLoading && (
         <CardShadow className="shadow" onClick={exitDetailHandler}>
-          <Details>
+          <Details layoutId={pathId}>
             {/* stats - game name, rating, and platfroms */}
             <Stats>
               <div className="rating">
-                <h3>{game.name}</h3>
+                <motion.h3 layoutId={`title ${pathId}`}>{game.name}</motion.h3>
                 <p>Rating: {game.rating}</p>
               </div>
               <Info>
@@ -55,7 +55,8 @@ function GameDetail() {
             <div className="gallary">
               {screen.results &&
                 screen.results.map((screen) => (
-                  <img
+                  <motion.img
+                    layoutId={`image ${pathId}`}
                     src={resizeSmall(screen.image, 1280)}
                     alt=""
                     key={screen.id}
