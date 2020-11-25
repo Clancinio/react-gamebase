@@ -1,12 +1,16 @@
 // Function to resize image
-const resizeSmall = (imagePath, size) => {
-  const image = imagePath.match(/media\/screenshots/)
-    ? // This line is for resizing the screenshots
-      imagePath.replace(
-        "/media/screenshots/",
-        `media/resize/${size}/-/screenshots`
-      )
-    : // This line is for resizing the big main image
-      imagePath.replace("/media/games/", `media/resize/${size}/-/games`);
-      return image;
+export const resizeSmall = (imagePath, size) => {
+  let image;
+  if (imagePath) {
+    image = imagePath.match(/media\/screenshots/)
+      ? imagePath.replace(
+          "media/screenshots",
+          `media/resize/${size}/-/screenshots`
+        )
+      : imagePath.replace("/media/games", `/media/resize/${size}/-/games`);
+  } else {
+    image = imagePath;
+  }
+
+  return image;
 };

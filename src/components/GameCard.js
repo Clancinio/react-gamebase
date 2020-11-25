@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 import { loadDetails } from "../actions/detailsAction";
 // React Router
 import { Link } from "react-router-dom";
+// Import resizeSmal() function
+import { resizeSmall } from "../util";
 
 function GameCard({ id, name, released, image }) {
   // FETCH THE GAME DETAILS
@@ -24,7 +26,7 @@ function GameCard({ id, name, released, image }) {
       <Link to={`games/${id}`}>
         <h3>{name}</h3>
         <p>{released}</p>
-        <img src={image} alt={name} />
+        <img src={resizeSmall(image, 640)} alt={name} />
       </Link>
     </StyledGameCard>
   );

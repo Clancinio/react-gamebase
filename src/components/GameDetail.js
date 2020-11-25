@@ -5,6 +5,8 @@ import { useHistory } from "react-router-dom";
 // Styling and Animation
 import styled from "styled-components";
 import { motion } from "framer-motion";
+// Import resizeSmal() function
+import { resizeSmall } from "../util";
 
 function GameDetail() {
   // useHistory
@@ -44,13 +46,20 @@ function GameDetail() {
               </Info>
             </Stats>
             <Media>
-              <img src={game.background_image} alt={game.name} />
+              <img
+                src={resizeSmall(game.background_image, 1280)}
+                alt={game.name}
+              />
             </Media>
             <Description>{game.description_raw}</Description>
             <div className="gallary">
               {screen.results &&
                 screen.results.map((screen) => (
-                  <img src={screen.image} alt="" key={screen.id} />
+                  <img
+                    src={resizeSmall(screen.image, 1280)}
+                    alt=""
+                    key={screen.id}
+                  />
                 ))}
             </div>
           </Details>
