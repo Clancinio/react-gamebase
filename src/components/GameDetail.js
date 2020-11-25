@@ -7,6 +7,13 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 // Import resizeSmal() function
 import { resizeSmall } from "../util";
+// Images
+import apple from "../images/apple.svg";
+import gamepad from "../images/gamepad.svg";
+import nintendo from "../images/nintendo.svg";
+import playstation from "../images/playstation.svg";
+import steam from "../images/steam.svg";
+import xbox from "../images/xbox.svg";
 
 function GameDetail({ pathId }) {
   // useHistory
@@ -14,11 +21,28 @@ function GameDetail({ pathId }) {
   // Exit GameDetail
   const exitDetailHandler = (e) => {
     const element = e.target;
-    if ((element.classlist = "shadow")) {
+    if (element.classList.contains("shadow")) {
       // Show the main scroll bar
       document.body.style = "auto";
       // Go back to home
       history.push("/");
+    }
+  };
+  // Get platform images
+  const getPlatformImages = (platform) => {
+    switch (platform) {
+      case "PlayStation 4":
+        return playstation;
+      case "Xbox One":
+        return xbox;
+      case "PC":
+        return steam;
+      case "Nintendo Switch":
+        return nintendo;
+      case "iOS":
+        return apple;
+      default:
+        return gamepad;
     }
   };
   // Get data from state
@@ -40,7 +64,11 @@ function GameDetail({ pathId }) {
                 <Platforms>
                   {game.platforms &&
                     game.platforms.map((data) => (
-                      <h3 key={data.platform.id}>{data.platform.name}</h3>
+                      <img
+                        alt={data.platform.name}
+                        key={data.platform.id}
+                        src={getPlatformImages(data.platform.name)}
+                      ></img>
                     ))}
                 </Platforms>
               </Info>
@@ -78,6 +106,7 @@ const CardShadow = styled(motion.div)`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 5;
   &::-webkit-scrollbar {
     width: 0.5rem;
   }
@@ -94,6 +123,7 @@ const Details = styled(motion.div)`
   position: absolute;
   color: #000;
   left: 10%;
+  z-index: 10;
   img {
     width: 100%;
   }

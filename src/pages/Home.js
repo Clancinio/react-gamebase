@@ -30,7 +30,7 @@ function Home() {
   return (
     // GameDetail - This is a popup that contains details of an individual game
     <GameList>
-      <AnimateSharedLayout type="crossfade">
+      <AnimateSharedLayout>
         <AnimatePresence>{pathId && <GameDetail pathId={pathId} />}</AnimatePresence>
         <h2>Upcoming Games</h2>
         <Games>
@@ -39,7 +39,7 @@ function Home() {
               id={game.id}
               name={game.name}
               released={game.released}
-              image={game.background_image}
+              image={resizeSmall(game.background_image, 640)}
               key={game.id}
             />
           ))}
@@ -51,7 +51,7 @@ function Home() {
               id={game.id}
               name={game.name}
               released={game.released}
-              image={game.background_image}
+              image={resizeSmall(game.background_image, 640)}
               key={game.id}
             />
           ))}
@@ -63,7 +63,7 @@ function Home() {
               id={game.id}
               name={game.name}
               released={game.released}
-              image={game.background_image}
+              image={resizeSmall(game.background_image, 640)}
               key={game.id}
             />
           ))}
