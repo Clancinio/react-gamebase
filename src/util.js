@@ -9,7 +9,7 @@ export const resizeSmall = (imagePath, size) => {
         )
       : imagePath.replace("/media/games", `/media/resize/${size}/-/games`);
   } else {
-    image = imagePath;
+    image = "https://picsum.photos/200/300";
   }
 
   return image;

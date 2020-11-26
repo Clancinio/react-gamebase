@@ -28,7 +28,6 @@ function Home() {
   const { popular, newGames, upcoming } = useSelector((state) => state.games);
 
   return (
-    // GameDetail - This is a popup that contains details of an individual game
     <GameList>
       <AnimateSharedLayout>
         <AnimatePresence>{pathId && <GameDetail pathId={pathId} />}</AnimatePresence>

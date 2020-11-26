@@ -11,11 +11,9 @@ import { Link } from "react-router-dom";
 import { resizeSmall } from "../util";
 
 function GameCard({ id, name, released, image }) {
-  const stringPathID = id.toString();
-  console.log(typeof stringPathID);
   // FETCH THE GAME DETAILS
   const dispatch = useDispatch();
-
+  const stringPathID = id.toString();
   const loadDetailsHandler = () => {
     // This line hides the main scrollbar 
     document.body.style.overflow = "hidden";
