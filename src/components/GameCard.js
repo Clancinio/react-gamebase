@@ -13,7 +13,8 @@ import { resizeSmall } from "../util";
 function GameCard({ id, name, released, image }) {
   // FETCH THE GAME DETAILS
   const dispatch = useDispatch();
-  const stringPathID = id.toString();
+  const stringPathId = id.toString();
+
   const loadDetailsHandler = () => {
     // This line hides the main scrollbar 
     document.body.style.overflow = "hidden";
@@ -22,11 +23,11 @@ function GameCard({ id, name, released, image }) {
   };
 
   return (
-    <StyledGameCard layoutId={stringPathID} onClick={loadDetailsHandler}>
+    <StyledGameCard layoutId={stringPathId} onClick={loadDetailsHandler}>
       <Link to={`games/${id}`}>
-        <h3 layoutId={`title ${stringPathID}`}>{name}</h3>
+        <h3 layoutId={`title ${stringPathId}`}>{name}</h3>
         <p>{released}</p>
-        <motion.img layoutId={`image ${stringPathID}`} src={resizeSmall(image, 640)} alt={name} />
+        <motion.img layoutId={`image ${stringPathId}`} src={resizeSmall(image, 640)} alt={name} />
       </Link>
     </StyledGameCard>
   );

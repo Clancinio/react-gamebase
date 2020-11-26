@@ -1,17 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 // Styles and Animations
 import styled from "styled-components"
 import { motion } from "framer-motion";
+// Redux
+import { fetchSearch } from "../actions/gamesAction";
+import {useDispatch} from "react-redux";
 
 function Nav() {
+  const dispatch = useDispatch();
+  const [searchInput, setSearchInput] = useState("");
+
+  const inputHandler = (e) => {
+    setSearchInput(e.target.value)
+  }
+
+  const submitSearch = (e) => {
+    e.preventDefault();
+    console.log("search submitted");
+    dispatch(fetchSearch(searchInput));
+    setSearchInput("");
+  }
   return (
     <StyledNav>
       <Logo>
         <h1>GameBase</h1>
       </Logo>
       <InputStyled className="search">
-        <input type="text"/>
-        <button>Search</button>
+        <input value={searchInput} onChange={inputHandler} type="text"/>
+        <button onClick={submitSearch} type="submit">Search</button>
       </InputStyled>
     </StyledNav>
   )
@@ -52,7 +68,7 @@ const StyledNav = styled(motion.nav)`
   }
 `;
 
-const InputStyled = styled(motion.nav)`
+const InputStyled = styled(motion.form)`
   display: flex;
   justify-content: center;
   align-items: center;
