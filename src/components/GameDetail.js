@@ -145,6 +145,7 @@ const Platforms = styled(motion.div)`
   justify-content: space-evenly;
   img {
     margin-left: 3rem;
+    width: 30px;
   }
 `;
 

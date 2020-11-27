@@ -1,3 +1,4 @@
+import {useDispatch } from "react-redux";
 // Function to resize image
 export const resizeSmall = (imagePath, size) => {
   let image;
@@ -14,3 +15,5 @@ export const resizeSmall = (imagePath, size) => {
 
   return image;
 };
+
+

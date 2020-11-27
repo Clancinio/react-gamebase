@@ -1,39 +1,46 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 // Styles and Animations
-import styled from "styled-components"
+import styled from "styled-components";
 import { motion } from "framer-motion";
 // Redux
 import { fetchSearch } from "../actions/gamesAction";
-import {useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 // Images
-import monster from "../images/monster.svg"
+import monster from "../images/monster.svg";
 
 function Nav() {
   const dispatch = useDispatch();
   const [searchInput, setSearchInput] = useState("");
 
   const inputHandler = (e) => {
-    setSearchInput(e.target.value)
-  }
+    setSearchInput(e.target.value);
+  };
 
   const submitSearch = (e) => {
     e.preventDefault();
     console.log("search submitted");
     dispatch(fetchSearch(searchInput));
     setSearchInput("");
-  }
+  };
+
+  const clearSearched = () => {
+    dispatch({ type: "CLEAR_SEARCHED" });
+  };
+
   return (
     <StyledNav>
-      <Logo>
+      <Logo onClick={clearSearched}>
         <h1>GameBase</h1>
-        <img src={monster} alt=""/>
+        <img src={monster} alt="ghost" />
       </Logo>
       <InputStyled className="search">
-        <input value={searchInput} onChange={inputHandler} type="text"/>
-        <button onClick={submitSearch} type="submit">Search</button>
+        <input value={searchInput} onChange={inputHandler} type="text" />
+        <button onClick={submitSearch} type="submit">
+          Search
+        </button>
       </InputStyled>
     </StyledNav>
-  )
+  );
 }
 
 const StyledNav = styled(motion.nav)`
@@ -42,9 +49,9 @@ const StyledNav = styled(motion.nav)`
   text-align: center;
   h1 {
     font-size: 2.5rem;
-    color: white
+    color: white;
   }
-  input{
+  input {
     width: 30%;
     font-size: 1.5rem;
     padding: 0.5rem;
@@ -65,9 +72,10 @@ const StyledNav = styled(motion.nav)`
     color: white;
     outline: none;
     cursor: pointer;
-  } & button:hover {
-    border: 3px solid #BD8C3D;
-    color: #BD8C3D;
+  }
+  & button:hover {
+    border: 3px solid #bd8c3d;
+    color: #bd8c3d;
   }
 `;
 
@@ -82,10 +90,12 @@ const Logo = styled(motion.nav)`
   display: flex;
   justify-content: center;
   img {
-    width: 50px;
+    width: 60px;
     fill: white;
     margin-left: 10px;
+  } &:hover {
+    cursor: pointer;
   }
 `;
 
-export default Nav
+export default Nav;
