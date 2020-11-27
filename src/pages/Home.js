@@ -29,6 +29,10 @@ function Home() {
     (state) => state.games
   );
 
+  const clearSearched = () => {
+    dispatch({ type: "CLEAR_SEARCHED" });
+  };
+
   return (
     <GameList>
       <AnimateSharedLayout>
@@ -37,7 +41,10 @@ function Home() {
         </AnimatePresence>
         {searched.length ? (
           <div className={searched}>
-            <h2>Search Results</h2>
+            <SearchHeading>
+            <h2 >Search Results</h2>
+            <button onClick={clearSearched}>Clear</button>
+            </SearchHeading>
             <Games>
               {searched.map((game) => (
                 <GameCard
@@ -107,6 +114,33 @@ const Games = styled(motion.div)`
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-column-gap: 3rem;
   grid-row-gap: 5rem;
+`;
+
+const SearchHeading = styled(motion.div)`
+margin-bottom: 1rem;
+h2{
+  padding-bottom: 1rem;
+}
+h3 {
+  color: #bd8c3d;
+}
+button {
+    font-size: 1rem;
+    border: none;
+    font-weight: bold;
+    padding: 0.55rem 2rem;
+    margin-left: 0.7rem;
+    background: white;
+    border: 3px solid #bd8c3d;
+    border-radius: 5px;
+    color: #bd8c3d;
+    outline: none;
+    cursor: pointer;
+  }
+  & button:hover {
+    border: 3px solid #A27834;
+    color: #A27834;
+  }
 `;
 
 export default Home;

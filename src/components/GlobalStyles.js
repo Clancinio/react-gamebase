@@ -44,7 +44,9 @@ const GlobalStyle = createGlobalStyle`
   input {
     font-weight: bold;
     font-family: 'Oswald', sans-serif;
-
+  }
+  div.searched h2 {
+    padding: 0;
   }
 `;
 
