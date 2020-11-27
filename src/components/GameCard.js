@@ -27,7 +27,7 @@ function GameCard({ id, name, released, image }) {
       <Link to={`games/${id}`}>
         <h3 layoutId={`title ${stringPathId}`}>{name}</h3>
         <p>{released}</p>
-        <motion.img layoutId={`image ${stringPathId}`} src={resizeSmall(image, 640)} alt={name} />
+        <motion.img layoutId={`image ${stringPathId}`} src={resizeSmall(image, 600)} alt={name} />
       </Link>
     </StyledGameCard>
   );

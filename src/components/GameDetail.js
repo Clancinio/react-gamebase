@@ -75,7 +75,7 @@ function GameDetail({ pathId }) {
             </Stats>
             <Media>
               <img
-                src={resizeSmall(game.background_image, 1280)}
+                src={resizeSmall(game.background_image, 600)}
                 alt={game.name}
               />
             </Media>
@@ -85,7 +85,7 @@ function GameDetail({ pathId }) {
                 screen.results.map((screen) => (
                   <motion.img
                     layoutId={`image ${pathId}`}
-                    src={resizeSmall(screen.image, 1280)}
+                    src={resizeSmall(screen.image, 600)}
                     alt=""
                     key={screen.id}
                   />

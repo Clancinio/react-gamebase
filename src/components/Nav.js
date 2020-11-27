@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 // Redux
 import { fetchSearch } from "../actions/gamesAction";
 import {useDispatch} from "react-redux";
+// Images
+import monster from "../images/monster.svg"
 
 function Nav() {
   const dispatch = useDispatch();
@@ -24,6 +26,7 @@ function Nav() {
     <StyledNav>
       <Logo>
         <h1>GameBase</h1>
+        <img src={monster} alt=""/>
       </Logo>
       <InputStyled className="search">
         <input value={searchInput} onChange={inputHandler} type="text"/>
@@ -76,6 +79,13 @@ const InputStyled = styled(motion.form)`
 `;
 
 const Logo = styled(motion.nav)`
+  display: flex;
+  justify-content: center;
+  img {
+    width: 50px;
+    fill: white;
+    margin-left: 10px;
+  }
 `;
 
 export default Nav
