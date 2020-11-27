@@ -101,6 +101,7 @@ function GameDetail({ pathId }) {
 const CardShadow = styled(motion.div)`
   width: 100%;
   min-height: 100vh;
+  padding: 3rem 0;
   overflow-y: scroll;
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
@@ -133,6 +134,10 @@ const Stats = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media (max-width: 1200px) {
+    text-align:center;
+    flex-direction: column;
+  }
 `;
 
 // platforms wrapper
@@ -146,6 +151,11 @@ const Platforms = styled(motion.div)`
   img {
     margin-left: 3rem;
     width: 30px;
+  }
+  @media (max-width: 1200px) {
+    img:first-of-type {
+      margin-left: 0;
+    }
   }
 `;
 
