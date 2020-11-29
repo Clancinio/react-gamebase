@@ -1,4 +1,3 @@
-import {useDispatch } from "react-redux";
 // Function to resize image
 export const resizeSmall = (imagePath, size) => {
   let image;

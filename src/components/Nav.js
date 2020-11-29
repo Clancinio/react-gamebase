@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // Styles and Animations
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { fadeIn } from "../animations";
 // Redux
 import { fetchSearch } from "../actions/gamesAction";
 import { useDispatch } from "react-redux";
@@ -28,12 +29,12 @@ function Nav() {
   };
 
   return (
-    <StyledNav>
-      <Logo onClick={clearSearched}>
+    <StyledNav >
+      <Logo onClick={clearSearched} variants={ fadeIn } initial="hidden" animate="show">
         <h1>GameBase</h1>
         <img src={monster} alt="ghost" />
       </Logo>
-      <InputStyled className="search">
+      <InputStyled className="search" variants={ fadeIn } initial="hidden" animate="show">
         <input value={searchInput} onChange={inputHandler} type="text" />
         <button onClick={submitSearch} type="submit">
           Search
@@ -93,7 +94,8 @@ const Logo = styled(motion.nav)`
     width: 60px;
     fill: white;
     margin-left: 10px;
-  } &:hover {
+  }
+  &:hover {
     cursor: pointer;
   }
 `;

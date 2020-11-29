@@ -2,6 +2,8 @@ import React from "react";
 // Styling and Animation
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { popup } from "../animations";
+
 // Redux
 import { useDispatch } from "react-redux";
 import { loadDetails } from "../actions/detailsAction";
@@ -23,7 +25,7 @@ function GameCard({ id, name, released, image }) {
   };
 
   return (
-    <StyledGameCard layoutId={stringPathId} onClick={loadDetailsHandler}>
+    <StyledGameCard layoutId={stringPathId} onClick={loadDetailsHandler} variants={ popup } initial="hidden" animate="show">
       <Link to={`games/${id}`}>
         <h3 layoutId={`title ${stringPathId}`}>{name}</h3>
         <p>{released}</p>

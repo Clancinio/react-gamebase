@@ -46,7 +46,7 @@ function GameDetail({ pathId }) {
     }
   };
   // Get data from state
-  const { game, screen, isLoading } = useSelector((state) => state.detail);
+  const { game, isLoading } = useSelector((state) => state.detail);
 
   return (
     <>
@@ -80,17 +80,17 @@ function GameDetail({ pathId }) {
               />
             </Media>
             <Description>{game.description_raw}</Description>
-            <div className="gallary">
+            {/* <div className="gallary">
               {screen.results &&
                 screen.results.map((screen) => (
                   <motion.img
                     layoutId={`image ${pathId}`}
-                    src={resizeSmall(screen.image, 600)}
+                    src={resizeSmall(screen.image, 1280)}
                     alt=""
-                    key={screen.id}
+                    key={screen.image}
                   />
                 ))}
-            </div>
+            </div> */}
           </Details>
         </CardShadow>
       )}
@@ -123,10 +123,15 @@ const Details = styled(motion.div)`
   background: #fff;
   position: absolute;
   color: #000;
-  left: 10%;
+  left: 10%; 
   z-index: 10;
   img {
     width: 100%;
+  }
+  @media (min-width: 1600px) {
+    width: 60%;
+    left: 20%; 
+
   }
 `;
 

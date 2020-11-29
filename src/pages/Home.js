@@ -5,6 +5,8 @@ import { loadGames } from "../actions/gamesAction";
 // Styling and Animation
 import styled from "styled-components";
 import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import { fadeIn } from "../animations";
+
 // Components
 import GameCard from "../components/GameCard";
 import GameDetail from "../components/GameDetail";
@@ -34,7 +36,7 @@ function Home() {
   };
 
   return (
-    <GameList>
+    <GameList variants={fadeIn} initial="hidden" animate="show">
       <AnimateSharedLayout>
         <AnimatePresence>
           {pathId && <GameDetail pathId={pathId} />}
@@ -42,8 +44,8 @@ function Home() {
         {searched.length ? (
           <div className={searched}>
             <SearchHeading>
-            <h2 >Search Results</h2>
-            <button onClick={clearSearched}>Clear</button>
+              <h2>Search Results</h2>
+              <button onClick={clearSearched}>Clear</button>
             </SearchHeading>
             <Games>
               {searched.map((game) => (
@@ -60,7 +62,7 @@ function Home() {
         ) : (
           ""
         )}
-        <h2>Upcoming Games</h2>
+        <h2>Popular Games</h2>
         <Games>
           {upcoming.map((game) => (
             <GameCard
@@ -72,7 +74,7 @@ function Home() {
             />
           ))}
         </Games>
-        <h2>New Games</h2>
+        <h2>Upcomming</h2>
         <Games>
           {newGames.map((game) => (
             <GameCard
@@ -84,7 +86,7 @@ function Home() {
             />
           ))}
         </Games>
-        <h2>Popular Games</h2>
+        <h2>New Games</h2>
         <Games>
           {popular.map((game) => (
             <GameCard
@@ -117,14 +119,14 @@ const Games = styled(motion.div)`
 `;
 
 const SearchHeading = styled(motion.div)`
-margin-bottom: 1rem;
-h2{
-  padding-bottom: 1rem;
-}
-h3 {
-  color: #bd8c3d;
-}
-button {
+  margin-bottom: 1rem;
+  h2 {
+    padding-bottom: 1rem;
+  }
+  h3 {
+    color: #bd8c3d;
+  }
+  button {
     font-size: 1rem;
     border: none;
     font-weight: bold;
@@ -138,8 +140,8 @@ button {
     cursor: pointer;
   }
   & button:hover {
-    border: 3px solid #A27834;
-    color: #A27834;
+    border: 3px solid #a27834;
+    color: #a27834;
   }
 `;
 
